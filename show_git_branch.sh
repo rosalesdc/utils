@@ -1,4 +1,10 @@
-#!/bin/bash
+#! /usr/bin/env bash
+
+RED="31"
+GREEN="32"
+BOLDGREEN="\e[1;${GREEN}m"
+ITALICRED="\e[3;${RED}m"
+ENDCOLOR="\e[0m"
 
 recorrer_directorio()
 {
@@ -9,7 +15,7 @@ recorrer_directorio()
    if [ -d "$file" ]; then
 
     echo "------------------------------------"
-    echo "NOMBRE DIR > " $file
+    echo -e "NOMBRE DIR > ${BOLDGREEN}" $file "${ENDCOLOR}"
     cd $file
     git status
     cd ..
@@ -19,3 +25,4 @@ recorrer_directorio()
 
 recorrer_directorio $DIR
 read  -p "Press Enter to exit..."
+
